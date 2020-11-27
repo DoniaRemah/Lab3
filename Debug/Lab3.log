@@ -1,2 +1,3 @@
-﻿  Garbage.cpp
+﻿  Exercise3.cpp
+C:\Users\donia\Desktop\Uni\1-Courses\Programming Techniques\Projects\Lab3\Lab3\Exercise3.cpp(137): warning C4715: 'GameProfile::ShowAdvertise': not all control paths return a value
   Lab3.vcxproj -> C:\Users\donia\Desktop\Uni\1-Courses\Programming Techniques\Projects\Lab3\Debug\Lab3.exe

@@ -18,11 +18,11 @@ public:
 	GameProfile(string n, int icl, int ic, int h, bool iip, int iwa) 
 	{
 		string name = n;
-		int currentLevel = icl;
-		int coins = ic;
-		int hints = h;
-		bool IsPremiumVersion = iip;
-		int watchedAdvertisements = iwa;
+		currentLevel = icl;
+		coins = ic;
+		hints = h;
+		IsPremiumVersion = iip;
+		watchedAdvertisements = iwa;
 	}
 
 	// Set Functions:
@@ -141,4 +141,22 @@ public:
 		coins += pv_player.getCoins();
  	}
 
+
 };
+
+int main()
+{
+	GameProfile player1("james", 3,3000,5,false,0);
+	cout << "Before buying anything: " << player1.getCoins() << endl;
+	player1.BuyHints(1);
+	cout << "After buying hint: " << player1.getCoins() << endl;
+	player1.BuyPremium();
+	cout << "After buying premium: " << player1.getCoins() << endl;
+	GameProfile player2("Alex", 3, 200, 1, false, 0);
+	player1.TransferCoins(player2);
+	cout << "After transfering: " << player1.getCoins() << endl;
+	player1.ShowAdvertise();
+	cout << "coins after adds: " << player1.getCoins();
+	cout << "player rank: " << player1.GetRank();
+	return 0;
+}
