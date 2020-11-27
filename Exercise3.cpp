@@ -14,8 +14,7 @@ private:
 public:
 
 	// Constructor:
-
-	GameProfile(string n, int icl, int ic, int h, bool iip, int iwa) 
+	GameProfile(string n= "p" , int icl = 0, int ic = 0, int h = 3, bool iip = false, int iwa = 0) 
 	{
 		string name = n;
 		currentLevel = icl;
@@ -133,6 +132,7 @@ public:
 		{
 			coins = coins + 50;
 			watchedAdvertisements++;
+			return false;
 		}
 	}
 
@@ -143,6 +143,22 @@ public:
 
 
 };
+
+GameProfile HighestLevel(GameProfile array[],int n)
+{
+	GameProfile highestlevel = array[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (highestlevel.getCurrentLevel() < array[i].getCurrentLevel())
+		{
+			highestlevel = array[i];
+		}
+
+	}
+	return highestlevel;
+}
+
+
 
 int main()
 {
@@ -157,6 +173,34 @@ int main()
 	cout << "After transfering: " << player1.getCoins() << endl;
 	player1.ShowAdvertise();
 	cout << "coins after adds: " << player1.getCoins();
-	cout << "player rank: " << player1.GetRank();
+	cout << endl <<"player rank: " << player1.GetRank() << endl;
+
+	// Advanced Code.
+	int n;
+	cout << "Please enter number of players: ";
+	cin >> n; cout << endl;
+	GameProfile *array = new GameProfile[n];
+	GameProfile playeri;
+	for (int i = 0; i < n ; i++)
+	{
+		cout << "Enter Player number " << i+1 << " info";
+		cout << endl << "please enter name: ";
+		string name; cin >> name; cout << "please enter hints: ";
+		playeri.setName(name);
+		int hints; cin >> hints; cout << "please enter coins: ";
+		playeri.Sethints(hints);
+		int coins; cin >> coins; cout<< "please enter level: ";
+		playeri.setCoins(coins);
+		int level; cin >> level; cout  << "please enter if premium (1 or 0): ";
+		playeri.setCurrentLevel(level);
+		int isprem; cin >> isprem; cout << "please enter watched adds: ";
+		playeri.setIsPremiumVersion(isprem);
+		int nwa; cin >> nwa; cout << endl;
+		playeri.setWatchedAds(nwa);
+		array[i] = playeri;
+	}
+	GameProfile highestlevel = HighestLevel(array,n);
+	cout << "Player of Highest Level is: " << highestlevel.getName() << endl;
+	delete [] array;
 	return 0;
 }
