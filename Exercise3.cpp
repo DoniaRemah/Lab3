@@ -93,7 +93,7 @@ public:
 
 	bool BuyHints(int number)
 	{
-		if (coins > number * 100)
+		if (coins >= number * 100)
 		{
 			hints = hints + number;
 			coins = coins - (number * 100);
@@ -113,7 +113,7 @@ public:
 
 	bool BuyPremium()
 	{
-		if (coins > 500)
+		if (coins >= 500)
 		{
 			IsPremiumVersion = true;
 			coins = coins - 500;
@@ -135,5 +135,10 @@ public:
 			watchedAdvertisements++;
 		}
 	}
+
+	void TransferCoins(GameProfile pv_player)
+	{
+		coins += pv_player.getCoins();
+ 	}
 
 };
